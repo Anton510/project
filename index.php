@@ -96,12 +96,12 @@
                               </div>
                                 <?php foreach ($comments as $comment): ?>
                                 <div class="media">
-                                  <img src="<?php echo $comment['user_imege']; ?>" class="mr-3" alt="..." width="64" height="64">
+                                   <img src="<?php echo $comment['user_imege']; ?>" class="mr-3" alt="..." width="64" height="64">
                                   <div class="media-body">
                                     <h5 class="mt-0"><?php echo $comment['name'] ?></h5> 
                                     <span><small><?php echo $comment ['data']; ?></small></span>
                                     <p>
-                                        <?php echo $comment['comments']; ?>
+                                        <?php echo $comment['comment']; ?>
                                     </p>
                                   </div>
                                 </div>
@@ -115,17 +115,21 @@
                             <div class="card-header"><h3>Оставить комментарий</h3></div>
 
                             <div class="card-body">
-                                <form action="/store" method="post">
-                                    <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Имя</label>
-                                    <input name="name" class="form-control" id="exampleFormControlTextarea1" />
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Сообщение</label>
-                                    <textarea name="text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                  </div>
-                                  <button type="submit" class="btn btn-success">Отправить</button>
-                                </form>
+                            <form name="comment" action="store.php" method="post">
+                                <p>
+                                 <label>Имя:</label>
+                                <input type="text" name="name" />
+                                </p>
+                                 <p>
+                                 <label>Комментарий:</label>
+                                  <br />
+                                  <textarea name="comment" cols="30" rows="5"></textarea>
+                                     </p>
+                                     <p>
+                                    <input type="hidden" name="id" value="id" />
+                                 <input type="submit" value="Отправить" />
+                                         </p>
+                                        </form>
                             </div>
                         </div>
                     </div>
