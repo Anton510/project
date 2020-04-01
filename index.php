@@ -1,7 +1,6 @@
 <?php
     session_start();
-    $_SESSION['push'] = 'Комментарий успешно добавлен';
-
+    
     $pdo = new PDO("mysql:host=localhost;dbname=test;", "root", "");
     $statement = $pdo->prepare("SELECT * FROM comments");
     $statement->execute();
@@ -85,11 +84,11 @@
                             <div class="card-header"><h3>Комментарии</h3></div>
 
                             <div class="card-body">
-                              <div class="alert alert-success" role="alert">
-                               <?php echo $_SESSION['push'];
-                                session_write_close();
-                                ?>
-                              </div>
+                              
+                                <?php echo $_SESSION['push'];
+                                unset($_SESSION['push']); ?>
+                                
+                              
                                 <?php foreach ($massage as $comment): ?>
                                 <div class="media">
                                  <img src="<?php echo $comment['user_image']; ?>" class="mr-3" alt="..." width="64" height="64">
