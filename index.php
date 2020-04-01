@@ -2,9 +2,11 @@
     session_start();
     
     $pdo = new PDO("mysql:host=localhost;dbname=test;", "root", "");
-    $statement = $pdo->prepare("SELECT * FROM comments");
+    // задание сортировки
+    $statement = $pdo->prepare("SELECT * FROM comments ORDER BY id DESC");
     $statement->execute();
     $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 <!DOCTYPE html>
