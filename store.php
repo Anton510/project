@@ -1,4 +1,5 @@
 <?php
+//задание флеш уведомление
 session_start();
     $_SESSION['push'] = "<div class='alert alert-success' role='alert'>Комментарий успешно добавлен</div>" ;
 

@@ -84,7 +84,7 @@
                             <div class="card-header"><h3>Комментарии</h3></div>
 
                             <div class="card-body">
-                              
+                              <!-- задание флеш уведомление -->
                                 <?php echo $_SESSION['push'];
                                 unset($_SESSION['push']); ?>
                                 
