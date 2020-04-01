@@ -8,6 +8,7 @@
     $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +97,7 @@
                                  <img src="<?php echo $comment['user_image']; ?>" class="mr-3" alt="..." width="64" height="64">
                                   <div class="media-body">
                                    <h5 class="mt-0"><?php echo $comment['name']; ?></h5> 
-                                    <span><small><?php echo $comment['data']; ?></small></span>
+                                    <span><small><?= date("d/m/Y", strtotime($comment['data']))?></small></span>
                                         <p>
                                             <?php echo $comment['comment']; ?>
                                         </p>
