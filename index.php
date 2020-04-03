@@ -8,6 +8,7 @@
     $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -96,7 +97,8 @@
                                  <img src="<?php echo $comment['user_image']; ?>" class="mr-3" alt="..." width="64" height="64">
                                   <div class="media-body">
                                    <h5 class="mt-0"><?php echo $comment['name']; ?></h5> 
-                                    <span><small><?php echo $comment['data']; ?></small></span>
+                                   <!-- задание редактирование даты -->
+                                    <span><small><?= date("d/m/Y", strtotime($comment['data']))?></small></span>
                                         <p>
                                             <?php echo $comment['comment']; ?>
                                         </p>
@@ -118,8 +120,13 @@
                                     <input name="name" class="form-control" id="exampleFormControlTextarea1" />
                                   </div>
                                   <div class="form-group">
-                                    <label for="exampleFormControlTextarea1">Сообщение</label>
+                                    <label for="exampleFormControlTextarea1">
+                                      <?php echo $_SESSION['push'];
+                                unset($_SESSION['push']); ?>
+                                    Сообщение</label>
                                     <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <?php echo $_SESSION['push'];
+                                unset($_SESSION['push']); ?>
                                   </div>
                                   <button type="submit" class="btn btn-success">Отправить</button>
                                 </form>
