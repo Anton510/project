@@ -1,5 +1,6 @@
 <?php
     session_start();
+
     
     $pdo = new PDO("mysql:host=localhost;dbname=test;", "root", "");
     // задание сортировки
@@ -117,17 +118,20 @@
                                     <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Имя</label>
                                     <input name="name" class="form-control" id="exampleFormControlTextarea1" />
-                                  </div>
-                                  <?php echo $_SESSION["name"];
+                                    <?php echo $_SESSION["name"];
                                   unset($_SESSION['name']); ?>
+                                  </div>
+                                  
                                   <div class="form-group">
+
                                     <label for="exampleFormControlTextarea1">
                                     
                                     Сообщение</label>
                                     <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>  
-                                  </div>
-                                   <?php echo $_SESSION["comment"]; 
+                                    <?php echo $_SESSION["comment"]; 
                                    unset($_SESSION['comment']);?>
+                                  </div>
+                                   
                                   <button type="submit" name="done" class="btn btn-success">Отправить</button>
                                 </form>
                             </div>

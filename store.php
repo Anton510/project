@@ -1,11 +1,22 @@
 <?php
-//задание валидация
- if (strlen($_SESSION['name']) == 0)   "<div class='alert alert-success' role='alert'>Пожалуйста введите ваше имя</div>" ;
-    if (strlen($_SESSION['comment']) == 0)  "<div class='alert alert-success' role='alert'>Пожалуйста введите ваш комментарий</div>" ;
-    header('Location: /index.php');
-    	else exit;
-//задание флеш уведомление
+
 session_start();
+//задание валидация
+if (strlen($_POST['name']) == 0) {
+     $_SESSION["name"] =  "<div class='alert alert-success' role='alert'>Пожалуйста введите ваше имя</div>";
+ header('Location: /index.php');
+ 	exit;
+}
+ if (strlen($_POST['comment']) == 0) {
+ 	 $_SESSION["comment"] =  "<div class='alert alert-success' role='alert'>Пожалуйста введите ваш комментарий</div>";
+ 	 header('Location: /index.php');
+ 	exit;
+ 	
+ }
+    
+    	
+//задание флеш уведомление
+
     $_SESSION['push'] = "<div class='alert alert-success' role='alert'>Комментарий успешно добавлен</div>" ;
 
 //Соединение с базой
