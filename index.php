@@ -112,23 +112,23 @@
                     <div class="col-md-12" style="margin-top: 20px;">
                         <div class="card">
                             <div class="card-header"><h3>Оставить комментарий</h3></div>
-
                             <div class="card-body">
                                 <form action="store.php" method="post">
                                     <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Имя</label>
                                     <input name="name" class="form-control" id="exampleFormControlTextarea1" />
                                   </div>
+                                  <?php echo $_SESSION["name"];
+                                  unset($_SESSION['name']); ?>
                                   <div class="form-group">
                                     <label for="exampleFormControlTextarea1">
-                                      <?php echo $_SESSION['push'];
-                                unset($_SESSION['push']); ?>
+                                    
                                     Сообщение</label>
-                                    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                    <?php echo $_SESSION['push'];
-                                unset($_SESSION['push']); ?>
+                                    <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>  
                                   </div>
-                                  <button type="submit" class="btn btn-success">Отправить</button>
+                                   <?php echo $_SESSION["comment"]; 
+                                   unset($_SESSION['comment']);?>
+                                  <button type="submit" name="done" class="btn btn-success">Отправить</button>
                                 </form>
                             </div>
                         </div>
