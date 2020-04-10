@@ -91,6 +91,10 @@ session_start();
                                             <input id="password" type="password" class="form-control " name="password"  autocomplete="new-password">
                                             <?php echo $_SESSION["password"];
                                              unset($_SESSION['password']); ?>
+                                             <?php echo $_SESSION['password_no'];
+                                             unset($_SESSION['password_no']); ?>
+                                             <?php echo $_SESSION["p_8"];
+                                             unset($_SESSION["p_8"]); ?>
                                         </div>
                                     </div>
 

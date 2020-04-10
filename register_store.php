@@ -26,14 +26,30 @@ if (strlen($_POST['Confirm']) == 0) {
 // валидация Email
 $email_a = $_POST['email'];
 if (filter_var($email_a, FILTER_VALIDATE_EMAIL)) {
-    echo "E-mail адрес '$email_b' указан верно.\n";
+    "E-mail адрес '$email_b' указан верно.\n";
 } else {
     $_SESSION['email_a'] = "E-mail адрес указан неверно.\n";
 
 	header('Location: /register.php');
  	exit;
 }
- 
+// Задание валидация пароля
+$p1 = $_POST['password'];
+$p2 = $_POST['Confirm'];
+
+if ($p1 === $p2) {
+	"всё ок";
+} else {
+	$_SESSION['password_no'] = "Пароль не совпадает.\n";
+	header('Location: /register.php');
+ 	exit;
+}
+// делаем 8 символов в пароле
+if (strlen($_POST['password']) < 8) {
+     $_SESSION["p_8"] =  "<div class='alert text-danger' role='alert'>В пароле должно быть минимум 8 символов</div>";
+     header('Location: /register.php');
+ 	exit;
+}
 
 // Хэширование пароля
 $pwd = $_POST['password'];
