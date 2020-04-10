@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,10 +64,11 @@
 
                                         <div class="col-md-6">
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" autofocus>
-
-                                                <span class="invalid-feedback" role="alert">
+                                            <?php echo $_SESSION["name"];
+                                             unset($_SESSION['name']); ?>
+                                               <!-- <span class="invalid-feedback" role="alert">
                                                     <strong>Ошибка валидации</strong>
-                                                </span>
+                                                </span> -->
                                         </div>
                                     </div>
 
@@ -71,7 +76,11 @@
                                         <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                                         <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control" name="email" >
+                                            <input id="email" type="text" class="form-control" name="email" >
+                                            <?php echo $_SESSION["email"];
+                                             unset($_SESSION['email']); ?>
+                                        <?php echo $_SESSION['email_a'];
+                                             unset($_SESSION['email_a']); ?>
                                         </div>
                                     </div>
 
@@ -80,6 +89,8 @@
 
                                         <div class="col-md-6">
                                             <input id="password" type="password" class="form-control " name="password"  autocomplete="new-password">
+                                            <?php echo $_SESSION["password"];
+                                             unset($_SESSION['password']); ?>
                                         </div>
                                     </div>
 
@@ -88,6 +99,8 @@
 
                                         <div class="col-md-6">
                                             <input id="Confirm Password" type="password" class="form-control" name="Confirm"  autocomplete="new-password">
+                                            <?php echo $_SESSION["Confirm"];
+                                             unset($_SESSION['Confirm']); ?>
                                         </div>
                                     </div>
 
