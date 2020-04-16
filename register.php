@@ -66,9 +66,8 @@ session_start();
                                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" autofocus>
                                             <?php echo $_SESSION["name"];
                                              unset($_SESSION['name']); ?>
-                                               <!-- <span class="invalid-feedback" role="alert">
-                                                    <strong>Ошибка валидации</strong>
-                                                </span> -->
+                                               <?php echo $_SESSION['stop_name'];
+                                             unset($_SESSION['stop_name']); ?>
                                         </div>
                                     </div>
 
@@ -81,6 +80,8 @@ session_start();
                                              unset($_SESSION['email']); ?>
                                         <?php echo $_SESSION['email_a'];
                                              unset($_SESSION['email_a']); ?>
+                                             <?php echo $_SESSION['stop'];
+                                             unset($_SESSION['stop']); ?>
                                         </div>
                                     </div>
 
