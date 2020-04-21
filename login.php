@@ -62,13 +62,15 @@ session_start();
                                         <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
 
                                         <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control is-invalid " name="email"  autocomplete="email" autofocus >
+                                            <input id="email" type="text" class="form-control is-invalid " name="email"  autocomplete="email" autofocus >
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>Ошибка валидации</strong>
                                                     <?php echo $_SESSION['stop_login'];
                                                     unset($_SESSION['stop_login']); ?>
                                                     <?php echo $_SESSION['stop_nul'];
                                                     unset($_SESSION['stop_nul']); ?>
+                                                    <?php echo $_SESSION['stop_valid'];
+                                                    unset($_SESSION['stop_valid']); ?>
                                                 </span>
                                         </div>
                                     </div>

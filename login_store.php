@@ -22,8 +22,17 @@ $dsn = "$driver:host=$host;dbname=$db_name;charset=$charset";
 $pdo = new PDO($dsn, $db_user, $db_password, $options); 
 // Подготовка и выполнение запроса
 		$email = trim($_POST['email']);
+		if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			"всё ок";
+		} else {
+			$_SESSION["stop_valid"] =  "<div class='alert text-danger' role='alert'>Неверный формат Email</div>";
+     				header('Location: /login.php');
+ 					exit;
+		}
+
 		$pwd = trim($_POST['password']);
-	//	if( !empty($login) && !empty($pwd) ){
+
+		if( !empty($email) && !empty($pwd) ){
 			$sql = 'SELECT email, password FROM register WHERE email = :email';
 			$params = [':email' => $email];
 			$stmt = $pdo->prepare($sql);
@@ -35,7 +44,7 @@ $pdo = new PDO($dsn, $db_user, $db_password, $options);
 
 				if( password_verify($pwd, $user->password) ) {
 					$_SESSION['user_login'] = $user->email;
-					header('Location: /admin.php'); 
+					header('Location: /index.php'); 
 					exit;
 				} else {
 					$_SESSION["stop_login"] =  "<div class='alert text-danger' role='alert'>Неверный логин или пароль</div>";
@@ -47,9 +56,9 @@ $pdo = new PDO($dsn, $db_user, $db_password, $options);
      				header('Location: /login.php');
  					exit;
 			}
-		//} else {
-		//	$_SESSION["stop_nul"] =  "<div class='alert text-danger' role='alert'>Пожалуйста, заполните все поля</div>";
-     	//			header('Location: /login.php');
- 		//			exit;
-		//}
+		} else {
+			$_SESSION["stop_nul"] =  "<div class='alert text-danger' role='alert'>Пожалуйста, заполните все поля</div>";
+     				header('Location: /login.php');
+ 					exit;
+		}
 ?>
