@@ -22,6 +22,15 @@ $dsn = "$driver:host=$host;dbname=$db_name;charset=$charset";
 $pdo = new PDO($dsn, $db_user, $db_password, $options); 
 // Подготовка и выполнение запроса
 		$email = trim($_POST['email']);
+
+		// кука запомнить меня
+		if ($_REQUEST['remember'] == 1) {
+		setcookie("remember", $email, time() + 3600, '/');
+		} else {
+			setcookie("remember", $email, time() - 3600, '/');
+		}
+
+
 		if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			"всё ок";
 		} else {
@@ -31,6 +40,7 @@ $pdo = new PDO($dsn, $db_user, $db_password, $options);
 		}
 
 		$pwd = trim($_POST['password']);
+		$_SESSION['email_reg'] = $_POST['email'];
 
 		if( !empty($email) && !empty($pwd) ){
 			$sql = 'SELECT email, password FROM register WHERE email = :email';
@@ -40,10 +50,15 @@ $pdo = new PDO($dsn, $db_user, $db_password, $options);
 		
 			$user = $stmt->fetch(PDO::FETCH_OBJ);
 		
+			// проба пера
+			$_SESSION['enter'] = $user;
+
 			if($user){
 
 				if( password_verify($pwd, $user->password) ) {
 					$_SESSION['user_login'] = $user->email;
+					
+					
 					header('Location: /index.php'); 
 					exit;
 				} else {
@@ -61,4 +76,7 @@ $pdo = new PDO($dsn, $db_user, $db_password, $options);
      				header('Location: /login.php');
  					exit;
 		}
+		
+		
+		
 ?>
