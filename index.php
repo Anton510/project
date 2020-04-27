@@ -19,7 +19,13 @@ $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 <head>
     <meta charset="utf-8">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <title>Comments</title>
 
@@ -31,35 +37,35 @@ $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
     <link href="css/app.css" rel="stylesheet">
 </head>
 <!--<?php $comments = [
-    [
-        'user_image' => 'img/no-user.jpg',
-        'user_id' => '1',
-        'user_name' => 'John Doe',
-        'date_comment' => '2019-08-22',
-        'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
-    ],
-    [
-        'user_image' => 'img/no-user.jpg',
-        'user_id' => '2',
-        'user_name' => 'Joseph Doe',
-        'date_comment' => '2019-08-23',
-        'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
-    ],
-    [
-        'user_image' => 'img/no-user.jpg',
-        'user_id' => '3',
-        'user_name' => 'Jane Doe',
-        'date_comment' => '2019-08-24',
-        'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
-    ],
-    [
-        'user_image' => 'img/no-user.jpg',
-        'user_id' => '4',
-        'user_name' => 'Lemmy',
-        'date_comment' => '2019-08-25',
-        'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
-    ],
-];
+        [
+            'user_image' => 'img/no-user.jpg',
+            'user_id' => '1',
+            'user_name' => 'John Doe',
+            'date_comment' => '2019-08-22',
+            'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
+        ],
+        [
+            'user_image' => 'img/no-user.jpg',
+            'user_id' => '2',
+            'user_name' => 'Joseph Doe',
+            'date_comment' => '2019-08-23',
+            'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
+        ],
+        [
+            'user_image' => 'img/no-user.jpg',
+            'user_id' => '3',
+            'user_name' => 'Jane Doe',
+            'date_comment' => '2019-08-24',
+            'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
+        ],
+        [
+            'user_image' => 'img/no-user.jpg',
+            'user_id' => '4',
+            'user_name' => 'Lemmy',
+            'date_comment' => '2019-08-25',
+            'user_comment' => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe aspernatur, ullam doloremque deleniti, sequi obcaecati.'
+        ],
+    ];
     ?>-->
 
 <body>
@@ -83,19 +89,28 @@ $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
                     <ul class='navbar-nav ml-auto'>
 
                         <!-- типо показывает при авторизации-->
+                      
+
                         <?php
                         if ($_COOKIE['remember'] != '') {
                             $_SESSION['enter'];
-                            echo $_SESSION['email_reg'];
+                            echo "<div class='dropdown'>
+                            <button class='btn btn-secondary dropdown-toggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                            {$_SESSION['email_reg']} 
+                            </button>
+                            <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                              <a class='dropdown-item' href='profile.php'>Профиль</a>
+                              <a class='dropdown-item' href='exit.php'>Выход</a>
+                            </div>
+                          </div>";
                         } else {
-                            
-                           echo "<li class='nav-item'>
+
+                            echo "<li class='nav-item'>
                        <a class='nav-link' href='login.php'>Login</a>
                    </li>
                    <li class='nav-item'>
                        <a class='nav-link' href='register.php'>Register</a>
                    </li> ";
-                   
                         }
                         ?>
                     </ul>
@@ -115,8 +130,8 @@ $massage = $statement->fetchAll(PDO::FETCH_ASSOC);
                             <div class="card-body">
                                 <!-- задание флеш уведомление -->
                                 <?php echo $_SESSION['push'];
-                                
-                                unset($_SESSION['push']); 
+
+                                unset($_SESSION['push']);
                                 ?>
 
 
